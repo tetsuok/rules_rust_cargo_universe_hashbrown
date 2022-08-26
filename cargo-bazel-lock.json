@@ -1,5 +1,5 @@
 {
-  "checksum": "ac9b17253585bf3d05e7f0b1002931833ded8c0e7c21f0eeab764e912bb1de3b",
+  "checksum": "ccd285a8998c26688a70dc4cf0e13649cbd82deee111fdd40ddd78d02a591e80",
   "crates": {
     "ahash 0.7.6": {
       "name": "ahash",
@@ -12,7 +12,7 @@
             "-p1"
           ],
           "patches": [
-            "@//:ahash.patch"
+            "@com_github_tetsuok_rules_rust_cargo_universe_hashbrown//:ahash.patch"
           ]
         }
       },

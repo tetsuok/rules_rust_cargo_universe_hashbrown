@@ -1,3 +1,5 @@
+workspace(name = "com_github_tetsuok_rules_rust_cargo_universe_hashbrown")
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
@@ -30,7 +32,7 @@ crates_repository(
     annotations = {
         "ahash": [crate.annotation(
             patch_args = ["-p1"],
-            patches = ["@//:ahash.patch"],
+            patches = ["@com_github_tetsuok_rules_rust_cargo_universe_hashbrown//:ahash.patch"],
             version = "=0.7.6",
         )],
     },
