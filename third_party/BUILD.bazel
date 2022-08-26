@@ -1,0 +1,24 @@
+load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_vendor")
+
+crates_vendor(
+    name = "crates_vendor",
+    annotations = {
+        "ahash": [crate.annotation(
+            patch_args = ["-p1"],
+            patches = ["@com_github_tetsuok_rules_rust_cargo_universe_hashbrown//third_party:ahash.patch"],
+        )],
+    },
+    cargo_lockfile = ":Cargo.Bazel.lock",
+    generate_build_scripts = False,
+    mode = "remote",
+    packages = {
+        "hashbrown": crate.spec(
+            version = "0.12.3",
+        ),
+        "ahash": crate.spec(
+            version = "=0.7.6",
+        ),
+    },
+    supported_platform_triples = ["x86_64-unknown-linux-gnu"],
+    tags = ["manual"],
+)

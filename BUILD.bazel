@@ -4,6 +4,6 @@ rust_binary(
     name = "hello",
     srcs = ["hello.rs"],
     deps = [
-        "@crate_index//:hashbrown",
+        "//third_party/crates:hashbrown",
     ],
 )

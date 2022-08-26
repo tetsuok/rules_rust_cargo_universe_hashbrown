@@ -23,32 +23,6 @@ load("@rules_rust//crate_universe:repositories.bzl", "crate_universe_dependencie
 
 crate_universe_dependencies()
 
-load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_repository", "render_config")
-
-# after changing:
-#   CARGO_BAZEL_REPIN=1 bazel sync --only=crate_index
-crates_repository(
-    name = "crate_index",
-    annotations = {
-        "ahash": [crate.annotation(
-            patch_args = ["-p1"],
-            patches = ["@com_github_tetsuok_rules_rust_cargo_universe_hashbrown//:ahash.patch"],
-            version = "=0.7.6",
-        )],
-    },
-    cargo_lockfile = "//:Cargo.Bazel.lock",
-    lockfile = "//:cargo-bazel-lock.json",
-    packages = {
-        "hashbrown": crate.spec(
-            version = "0.12.3",
-        ),
-    },
-    render_config = render_config(
-        default_package_name = "",
-    ),
-    supported_platform_triples = ["x86_64-unknown-linux-gnu"],
-)
-
-load("@crate_index//:defs.bzl", "crate_repositories")
+load("//third_party/crates:defs.bzl", "crate_repositories")
 
 crate_repositories()

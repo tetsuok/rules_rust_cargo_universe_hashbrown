@@ -7,3 +7,9 @@ A sample repository for bazelbuild/rules_rust#1527.
 ```
 bazel build //...
 ```
+
+### How to update dependencies
+
+```
+bazel run //third_party:crates_vendor -- --repin
+```
